@@ -1,0 +1,56 @@
+.export-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1.25rem;
+  margin-bottom: 0;
+  background: rgba(7, 11, 22, 0.6);
+  border-bottom: 1px solid var(--border);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.export-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.export-buttons { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+
+.export-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.8rem;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-2);
+  font-size: 0.74rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.export-btn:hover:not(:disabled) {
+  background: var(--accent-dim);
+  border-color: var(--accent-border);
+  color: var(--accent-light);
+  transform: translateY(-1px);
+}
+
+.export-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+@media print {
+  body * { visibility: hidden; }
+  .report-view, .report-view * { visibility: visible; }
+  .report-view { position: absolute; left: 0; top: 0; width: 100%; background: white; color: black; padding: 2rem; }
+  .export-controls, .copy-button, .sidebar, .search-form, .terminal-window, .stats-grid { display: none !important; }
+}

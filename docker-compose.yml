@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  tor:
+    image: dperson/torproxy:latest
+    container_name: drishti-tor
+    restart: unless-stopped
+    ports:
+      - "9050:9050"   # SOCKS5 proxy — used by Drishti for all .onion requests
+      - "9051:9051"   # Control port — used for circuit rotation
+    environment:
+      - TOR_MaxCircuitDirtiness=60
+      - TOR_NewCircuitPeriod=30
+    healthcheck:
+      test: ["CMD", "curl", "-sx", "socks5h://localhost:9050", "https://check.torproject.org/api/ip"]
+      interval: 30s
+      timeout: 15s
+      retries: 3
+      start_period: 20s

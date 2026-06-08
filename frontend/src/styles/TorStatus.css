@@ -1,0 +1,159 @@
+.tor-status {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.8rem;
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 0.5rem;
+  transition: border-color 0.2s;
+}
+
+.tor-status:hover { border-color: var(--border-2); }
+
+.tor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tor-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.66rem;
+  font-weight: 700;
+}
+
+.tor-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tor-indicator.online  .tor-dot {
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success), 0 0 18px rgba(74,222,128,0.3);
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+.tor-indicator.offline .tor-dot { background: var(--danger); }
+
+.tor-indicator.online  { color: var(--success); }
+.tor-indicator.offline { color: var(--danger); }
+
+.tor-label {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.1em;
+}
+
+.tor-state {
+  font-size: 0.56rem;
+  color: var(--text-3);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.tor-refresh {
+  background: transparent;
+  border: none;
+  color: var(--text-3);
+  cursor: pointer;
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  transition: color 0.15s, background 0.15s;
+}
+
+.tor-refresh:hover { color: var(--text-1); background: var(--bg-hover); }
+
+.tor-message {
+  font-size: 0.65rem;
+  color: var(--text-2);
+  background: rgba(59,130,246,0.05);
+  padding: 0.3rem 0.55rem;
+  border-radius: var(--radius-sm);
+  border-left: 2px solid var(--accent-border);
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+.tor-actions { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+
+.tor-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.32rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.68rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.tor-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.tor-btn-connect {
+  background: rgba(74,222,128,0.08);
+  border-color: rgba(74,222,128,0.25);
+  color: var(--success);
+  flex: 1;
+  justify-content: center;
+}
+
+.tor-btn-connect:hover:not(:disabled) {
+  background: rgba(74,222,128,0.16);
+  box-shadow: 0 0 14px rgba(74,222,128,0.15);
+}
+
+.tor-btn-rotate {
+  background: var(--accent-dim);
+  border-color: var(--accent-border);
+  color: var(--accent-light);
+  flex: 1;
+  justify-content: center;
+}
+
+.tor-btn-rotate:hover:not(:disabled) {
+  background: rgba(59,130,246,0.2);
+  box-shadow: 0 0 14px rgba(59,130,246,0.2);
+}
+
+.tor-btn-disconnect {
+  background: var(--danger-dim);
+  border-color: var(--danger-border);
+  color: var(--danger);
+}
+
+.tor-btn-disconnect:hover:not(:disabled) {
+  background: rgba(248,113,113,0.16);
+  box-shadow: 0 0 14px rgba(248,113,113,0.15);
+}
+
+.tor-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.61rem;
+  color: var(--text-3);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.tor-badge {
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+  color: var(--accent-light);
+  padding: 1px 6px;
+  border-radius: 8px;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.spin { animation: spin 1s linear infinite; }

@@ -1,0 +1,27 @@
+# Environments
+.env
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+
+# Cache and build
+.pytest_cache/
+dist/
+build/
+*.egg-info/
+
+# Data and Logs
+data/
+logs/
+outputs/
+*.log
+*.sqlite
+*.db
+*.sqlite3
+
+# OS generated files
+.DS_Store
+Thumbs.db

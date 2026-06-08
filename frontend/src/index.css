@@ -1,0 +1,527 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Backgrounds — cosmic void darks */
+  --bg-base:       #020409;
+  --bg-surface:    #050811;
+  --bg-card:       #090d18;
+  --bg-input:      #060a14;
+  --bg-hover:      #0d1424;
+  --bg-glass:      rgba(7, 10, 20, 0.85);
+  --bg-elevated:   #0e1525;
+
+  /* Divine Solar/Saffron Accents (The Third Eye Energy) */
+  --saffron:        #f97316;
+  --saffron-light:  #fb923c;
+  --saffron-bright: #fdba74;
+  --saffron-dim:    rgba(249, 115, 22, 0.12);
+  --saffron-border: rgba(249, 115, 22, 0.28);
+  --saffron-glow:   0 0 35px rgba(249, 115, 22, 0.45);
+
+  /* Divine Shiva Blue/Indigo (Infinite Consciousness) */
+  --indigo-cosmic:  #3b82f6;
+  --indigo-dim:     rgba(59, 130, 246, 0.1);
+  --indigo-border:  rgba(59, 130, 246, 0.25);
+  --indigo-glow:    0 0 30px rgba(59, 130, 246, 0.35);
+
+  /* Sacred Gold Accents */
+  --gold:           #d97706;
+  --gold-dim:       rgba(217, 119, 6, 0.08);
+  --gold-border:    rgba(217, 119, 6, 0.22);
+  --gold-glow:      0 0 24px rgba(217, 119, 6, 0.28);
+
+  /* Semantic status colors */
+  --danger:        #ef4444;
+  --danger-dim:    rgba(239, 68, 68, 0.08);
+  --danger-border: rgba(239, 68, 68, 0.28);
+  --success:       #22c55e;
+  --success-dim:   rgba(34, 197, 94, 0.08);
+  --success-border:rgba(34, 197, 94, 0.25);
+  --warning:       #eab308;
+
+  /* Text colors */
+  --text-1:        #f1f5f9;
+  --text-2:        #94a3b8;
+  --text-3:        #475569;
+
+  /* Borders */
+  --border:        rgba(255, 255, 255, 0.05);
+  --border-2:      rgba(255, 255, 255, 0.09);
+
+  /* Border Radii */
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --radius-xl:  22px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Outfit', -apple-system, sans-serif;
+  background: var(--bg-base);
+  /* Cosmic Divine background glows */
+  background-image:
+    radial-gradient(circle 800px at 50% -100px, rgba(249, 115, 22, 0.09) 0%, transparent 80%),
+    radial-gradient(circle 600px at 90% 85%, rgba(59, 130, 246, 0.07) 0%, transparent 80%),
+    radial-gradient(circle 500px at 10% 80%, rgba(217, 119, 6, 0.05) 0%, transparent 80%);
+  color: var(--text-1);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(249, 115, 22, 0.15); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(249, 115, 22, 0.35); }
+
+/* Glass layout container */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-base);
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  background: rgba(5, 8, 17, 0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.header-divider {
+  width: 1px;
+  height: 1.2rem;
+  background: var(--text-3);
+}
+
+.header-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-2);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.branding-text {
+  font-size: 0.78rem;
+  color: var(--text-2);
+}
+
+.branding-name {
+  font-weight: 700;
+  color: var(--saffron-light);
+}
+
+/* Custom premium card design */
+.card, .glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.card:hover {
+  border-color: var(--saffron-border);
+  box-shadow: 0 8px 36px rgba(249, 115, 22, 0.06), 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Saffron glowing cards */
+.card-saffron {
+  border: 1px solid var(--saffron-border);
+  box-shadow: 0 4px 30px rgba(249, 115, 22, 0.03);
+}
+.card-saffron:hover {
+  box-shadow: var(--saffron-glow);
+  border-color: var(--saffron-light);
+}
+
+/* Indigo cosmic cards */
+.card-indigo {
+  border: 1px solid var(--indigo-border);
+  box-shadow: 0 4px 30px rgba(59, 130, 246, 0.03);
+}
+.card-indigo:hover {
+  box-shadow: var(--indigo-glow);
+  border-color: var(--indigo-cosmic);
+}
+
+/* Gradient Text Styles */
+.gradient-text {
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-blue-text {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Primary Button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+  letter-spacing: 0.02em;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+  box-shadow: var(--saffron-glow), inset 0 1px 0 rgba(255,255,255,0.25);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active { transform: translateY(0); }
+
+/* Secondary Cosmic Button */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.5rem;
+  background: var(--bg-card);
+  color: var(--text-1);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--saffron-light);
+  background: var(--bg-hover);
+  color: #fff;
+}
+
+/* Threat severity badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.badge-critical {
+  background: var(--danger-dim);
+  color: var(--danger);
+  border: 1px solid var(--danger-border);
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.15);
+}
+
+.badge-high {
+  background: var(--saffron-dim);
+  color: var(--saffron);
+  border: 1px solid var(--saffron-border);
+}
+
+.badge-medium {
+  background: var(--gold-dim);
+  color: var(--gold);
+  border: 1px solid var(--gold-border);
+}
+
+.badge-low {
+  background: var(--success-dim);
+  color: var(--success);
+  border: 1px solid var(--success-border);
+}
+
+/* Pulsing Third Eye scanning portal animation */
+.third-eye-portal {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 50% 0 50% 0; /* Shivic Third Eye geometry */
+  transform: rotate(45deg);
+  background: linear-gradient(135deg, var(--saffron) 0%, var(--gold) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: third-eye-pulse 2.2s infinite ease-in-out;
+  box-shadow: var(--saffron-glow);
+  margin: 1.5rem auto;
+}
+
+.third-eye-pupil {
+  width: 28px;
+  height: 28px;
+  background: var(--bg-base);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-45deg);
+}
+
+.third-eye-core {
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #fff, var(--saffron-glow);
+}
+
+@keyframes third-eye-pulse {
+  0%, 100% {
+    transform: rotate(45deg) scale(1);
+    box-shadow: 0 0 25px rgba(249, 115, 22, 0.4);
+  }
+  50% {
+    transform: rotate(45deg) scale(1.08);
+    box-shadow: 0 0 45px rgba(249, 115, 22, 0.7);
+  }
+}
+
+/* Animations */
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ── Premium Forms & Inputs Custom Styling ── */
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--bg-input);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-md);
+  color: var(--text-1);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.5;
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Hover State */
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="number"]:hover,
+input[type="email"]:hover,
+textarea:hover,
+select:hover {
+  border-color: rgba(249, 115, 22, 0.25);
+  background: var(--bg-hover);
+}
+
+/* Focus State */
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+  background: var(--bg-hover);
+  border-color: var(--saffron-light);
+  box-shadow: 0 0 0 1px var(--saffron-light), 0 0 20px rgba(249, 115, 22, 0.15), inset 0 2px 4px rgba(0, 0, 0, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Textarea specifically */
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Select element styling */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23f97316'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.1rem;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+select option {
+  background: var(--bg-card);
+  color: var(--text-1);
+  padding: 0.5rem;
+}
+
+/* Placeholder styles */
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-3);
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+/* Input label styling */
+label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-2);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Custom premium slider/range input styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+  outline: none;
+  padding: 0.5rem 0;
+}
+
+/* Range Track */
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  border: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+  transition: background 0.2s ease;
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  border: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Range Thumb (Handle) */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--saffron-light) 0%, var(--saffron) 100%);
+  cursor: pointer;
+  margin-top: -6px; /* center thumb vertically */
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.5), 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid #fff;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--saffron-light) 0%, var(--saffron) 100%);
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.5), 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.15s ease;
+}
+
+/* Hover on thumb */
+input[type="range"]:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 0 16px var(--saffron), 0 2px 6px rgba(0, 0, 0, 0.6);
+  background: #fff;
+  border-color: var(--saffron);
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 0 16px var(--saffron), 0 2px 6px rgba(0, 0, 0, 0.6);
+  background: #fff;
+  border-color: var(--saffron);
+}
+
+/* Active track focus */
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: rgba(249, 115, 22, 0.2);
+}
+
